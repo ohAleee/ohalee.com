@@ -21,13 +21,13 @@ function easeOutCubic(t: number): number {
   return 1 - Math.pow(1 - t, 3);
 }
 
-export function IconCloud({ icons, images }: IconCloudProps) {
+export function IconCloud({icons, images}: IconCloudProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [iconPositions, setIconPositions] = useState<Icon[]>([]);
-  const [rotation] = useState({ x: 0, y: 0 });
+  const [rotation] = useState({x: 0, y: 0});
   const [isDragging, setIsDragging] = useState(false);
-  const [lastMousePos, setLastMousePos] = useState({ x: 0, y: 0 });
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const [lastMousePos, setLastMousePos] = useState({x: 0, y: 0});
+  const [mousePos, setMousePos] = useState({x: 0, y: 0});
   const [targetRotation, setTargetRotation] = useState<{
     x: number;
     y: number;
@@ -180,7 +180,7 @@ export function IconCloud({ icons, images }: IconCloudProps) {
     });
 
     setIsDragging(true);
-    setLastMousePos({ x: e.clientX, y: e.clientY });
+    setLastMousePos({x: e.clientX, y: e.clientY});
   };
 
   const handleMouseMove = (e: React.MouseEvent<HTMLCanvasElement>) => {
@@ -188,7 +188,7 @@ export function IconCloud({ icons, images }: IconCloudProps) {
     if (rect) {
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;
-      setMousePos({ x, y });
+      setMousePos({x, y});
     }
 
     if (isDragging) {
@@ -200,7 +200,7 @@ export function IconCloud({ icons, images }: IconCloudProps) {
         y: rotationRef.current.y + deltaX * 0.002,
       };
 
-      setLastMousePos({ x: e.clientX, y: e.clientY });
+      setLastMousePos({x: e.clientX, y: e.clientY});
     }
   };
 

@@ -1,17 +1,9 @@
 "use client";
 
-import { cva, type VariantProps } from "class-variance-authority";
-import {
-  motion,
-  MotionProps,
-  MotionValue,
-  useMotionValue,
-  useSpring,
-  useTransform,
-} from "motion/react";
-import React, { PropsWithChildren, useRef } from "react";
-
 import { cn } from "@/lib/utils";
+import { cva, type VariantProps } from "class-variance-authority";
+import { motion, MotionProps, MotionValue, useMotionValue, useSpring, useTransform, } from "motion/react";
+import React, { PropsWithChildren, useRef } from "react";
 
 export interface DockProps extends VariantProps<typeof dockVariants> {
   className?: string;
@@ -66,7 +58,7 @@ const Dock = React.forwardRef<HTMLDivElement, DockProps>(
         onMouseMove={(e) => mouseX.set(e.pageX)}
         onMouseLeave={() => mouseX.set(Infinity)}
         {...props}
-        className={cn(dockVariants({ className }), {
+        className={cn(dockVariants({className}), {
           "items-start": direction === "top",
           "items-center": direction === "middle",
           "items-end": direction === "bottom",
@@ -92,20 +84,20 @@ export interface DockIconProps
 }
 
 const DockIcon = ({
-  size = DEFAULT_SIZE,
-  magnification = DEFAULT_MAGNIFICATION,
-  distance = DEFAULT_DISTANCE,
-  mouseX,
-  className,
-  children,
-  ...props
-}: DockIconProps) => {
+                    size = DEFAULT_SIZE,
+                    magnification = DEFAULT_MAGNIFICATION,
+                    distance = DEFAULT_DISTANCE,
+                    mouseX,
+                    className,
+                    children,
+                    ...props
+                  }: DockIconProps) => {
   const ref = useRef<HTMLDivElement>(null);
   const padding = Math.max(6, size * 0.2);
   const defaultMouseX = useMotionValue(Infinity);
 
   const distanceCalc = useTransform(mouseX ?? defaultMouseX, (val: number) => {
-    const bounds = ref.current?.getBoundingClientRect() ?? { x: 0, width: 0 };
+    const bounds = ref.current?.getBoundingClientRect() ?? {x: 0, width: 0};
     return val - bounds.x - bounds.width / 2;
   });
 
@@ -124,7 +116,7 @@ const DockIcon = ({
   return (
     <motion.div
       ref={ref}
-      style={{ width: scaleSize, height: scaleSize, padding }}
+      style={{width: scaleSize, height: scaleSize, padding}}
       className={cn(
         "flex aspect-square cursor-pointer items-center justify-center rounded-full",
         className,

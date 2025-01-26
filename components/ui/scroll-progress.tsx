@@ -3,13 +3,14 @@
 import { cn } from "@/lib/utils";
 import { motion, MotionProps, useScroll, useSpring } from "motion/react";
 import React from "react";
+
 type ScrollProgressProps = Omit<React.HTMLAttributes<HTMLElement>, keyof MotionProps>
 
 export const ScrollProgress = React.forwardRef<
   HTMLDivElement,
   ScrollProgressProps
->(({ className, ...props }, ref) => {
-  const { scrollYProgress } = useScroll();
+>(({className, ...props}, ref) => {
+  const {scrollYProgress} = useScroll();
 
   const scaleX = useSpring(scrollYProgress, {
     stiffness: 200,
