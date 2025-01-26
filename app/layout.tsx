@@ -1,5 +1,5 @@
 import "@/app/globals.css"
-import { ThemeToggle } from "@/components/theme-switcher"
+import Footer from "@/components/footer";
 import { ThemeProvider } from "@/lib/providers/theme-provider"
 
 export const metadata = {
@@ -17,10 +17,12 @@ export default function RootLayout({children,}: { children: React.ReactNode }) {
       enableSystem
       disableTransitionOnChange
     >
-      <div className="fixed top-4 right-4 z-50">
-        <ThemeToggle/>
+      <div className="flex flex-col min-h-screen">
+        <main className="flex-grow bg-black pt-4">
+          {children}
+        </main>
+        <Footer/>
       </div>
-      {children}
     </ThemeProvider>
     </body>
     </html>

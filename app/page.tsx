@@ -1,326 +1,284 @@
 "use client"
 
-import { AnimatedCard } from "@/components/animated-card"
+import { BlurFade } from "@/components/ui/blur-fade";
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { SiDiscord, SiGithub, SiInstagram, SiTelegram, SiTiktok } from '@icons-pack/react-simple-icons';
-import { motion } from "framer-motion";
-import { Globe, LucideAlignHorizontalDistributeCenter, Mail, Music } from 'lucide-react';
+import { CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import { IconCloud } from "@/components/ui/icon-cloud";
+import { MagicCard } from "@/components/ui/magic-card";
+import { ScrollProgress } from "@/components/ui/scroll-progress";
+import { SiGithub, SiOpenjdk } from '@icons-pack/react-simple-icons';
+import { ChevronRight, Globe, LucideAlignHorizontalDistributeCenter, Music } from 'lucide-react';
 import Link from "next/link";
 
+const slugs = [
+  "typescript",
+  "javascript",
+  "python",
+  "openjdk",
+  "go",
+  "react",
+  "html5",
+  "css3",
+  "nodedotjs",
+  "express/white",
+  "nextdotjs/white",
+  "amazonwebservices",
+  "postgresql",
+  "redis",
+  "mariadb",
+  "shadcnui/white",
+  "firebase",
+  "cloudflare",
+  "nginx",
+  "docker",
+  "git",
+  "github/white",
+  "figma",
+  "ubuntu",
+];
+
+const features = {
+  performance: {
+    title: "Performance",
+    description: "Software needs to be fast and reliable. Don't let your users wait.",
+    svg: (
+      <svg
+        className="h-6 w-6 text-primary"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={2}
+          d="M5 13l4 4L19 7"
+        />
+      </svg>
+    ),
+  },
+  security: {
+    title: "Security",
+    description: "Protect your data and your users. Security is the key to success.",
+    svg: (
+      <svg
+        className="h-6 w-6 text-primary"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={2}
+          d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"
+        />
+      </svg>
+    ),
+  },
+  scalability: {
+    title: "Scalability",
+    description: "Grow without limits. Your software should be able to handle it.",
+    svg: (
+      <svg
+        className="h-6 w-6 text-primary"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={2}
+          d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+        />
+      </svg>
+    ),
+  },
+}
+
+const projects = {
+  pinguproxy: {
+    title: "PinguProxy",
+    description: "Proxy Service",
+    icon: Globe,
+    content: "A professional proxy service providing IPv4/IPv6 solutions for various networking needs. Built with performance and reliability in mind.",
+    link: "https://pinguproxy.com",
+    linkLabel: "Visit Website",
+  },
+  fxreplay: {
+    title: "FX Replay",
+    description: "Trading Strategy Testing Platform",
+    icon: LucideAlignHorizontalDistributeCenter,
+    content: "Test and refine your manual trading strategies using historical market data. An advanced platform for forex traders.",
+    link: "https://fxreplay.ohalee.com",
+    linkLabel: "Visit Platform",
+  },
+  matchmakinglibrary: {
+    title: "Matchmaking Library",
+    description: "Java Matchmaking Library",
+    icon: SiGithub,
+    content: "A powerful Java library for implementing matchmaking systems in games and applications. Simplifies the process of creating balanced and fair matches.",
+    link: "https://builtbybit.com/resources/ultimatematchmaking-game-library.30128/",
+    linkLabel: "View on BuiltByBit",
+  },
+  ohmusic: {
+    title: "ohMusic",
+    description: "Discord Music Bot",
+    icon: Music,
+    content: "A feature-rich Discord music bot supporting multiple platforms including YouTube, Spotify, and SoundCloud. Stream your favorite music with high-quality audio.",
+    link: "https://discord.com/oauth2/authorize?client_id=827620473477140234&permissions=36719616&scope=bot",
+    linkLabel: "Add to Discord",
+  },
+  minecraftplugins: {
+    title: "Minecraft Plugins",
+    description: "BuiltByBit Creator Profile",
+    icon: SiOpenjdk,
+    content: "Collection of high-quality Minecraft plugins including Bedwars, Guilds, Docker Server Manager, Tournaments, and OneBlock. Trusted by numerous server owners.",
+    link: "https://builtbybit.com/creators/ohalee.124730",
+    linkLabel: "View Profile",
+  },
+}
+
 export default function Page() {
+  const images = slugs.map((slug) => `https://cdn.simpleicons.org/${slug}`);
+
   return (
-    <div className="min-h-screen bg-gradient-to-b from-background via-background/90 to-background/80">
-      <section className="relative overflow-hidden px-6 pt-24 pb-8">
-        <div className="mx-auto max-w-2xl text-center">
-          <motion.div
-            initial={{opacity: 0, y: -20}}
-            animate={{opacity: 1, y: 0}}
-            transition={{duration: 0.5}}
-          >
-            <h1 className="text-4xl font-bold tracking-tight sm:text-6xl bg-gradient-to-r from-primary to-primary-foreground bg-clip-text text-transparent">
-              Full Stack Developer
-            </h1>
-          </motion.div>
-          <motion.p
-            initial={{opacity: 0}}
-            animate={{opacity: 1}}
-            transition={{duration: 0.5, delay: 0.2}}
-            className="mt-6 text-lg leading-8 text-muted-foreground"
-          >
-            Building innovative solutions with modern technologies.<br/>
-            Various Languages, Databases, and Frameworks.
-          </motion.p>
-          <motion.div
-            initial={{opacity: 0, y: 20}}
-            animate={{opacity: 1, y: 0}}
-            transition={{duration: 0.5, delay: 0.4}}
-            className="mt-10 flex items-center justify-center gap-6"
-          >
-            <Button asChild variant="default" className="bg-primary hover:bg-primary/90">
-              <Link href="https://github.com/ohalee">
-                <SiGithub className="h-4 w-4"/>
-                GitHub
-              </Link>
-            </Button>
-          </motion.div>
-        </div>
-      </section>
-
-      <section className="mx-auto max-w-7xl px-8 py-8">
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-          <motion.div
-            initial={{opacity: 0, y: 20}}
-            animate={{opacity: 1, y: 0}}
-            transition={{duration: 0.5, delay: 0.2}}
-          >
-            <Card className="border-primary/20">
-              <CardHeader>
-                <div className="flex items-center gap-4">
-                  <div className="rounded-full bg-primary/10 p-3">
-                    <svg
-                      className="h-6 w-6 text-primary"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                  </div>
-                  <CardTitle className="text-xl">Performance</CardTitle>
+    <div className="bg-gradient-to-b from-background via-background/90 to-background/80">
+      <ScrollProgress/>
+      <section className="relative min-h-[70vh] flex items-center overflow-hidden">
+        <div className="container max-w-5xl mx-auto relative">
+          <div className="flex flex-col md:flex-row items-center md:items-start">
+            <div className="w-full md:w-1/2 md:pr-8">
+              <div className="md:hidden mb-8">
+                <div className="relative aspect-square mx-auto">
+                  <IconCloud images={images}/>
                 </div>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground">
-                  Software needs to be fast and reliable. Don&#39;t let your users wait.
-                </p>
-              </CardContent>
-            </Card>
-          </motion.div>
+              </div>
 
-          <motion.div
-            initial={{opacity: 0, y: 20}}
-            animate={{opacity: 1, y: 0}}
-            transition={{duration: 0.5, delay: 0.3}}
-          >
-            <Card className="border-primary/20">
-              <CardHeader>
-                <div className="flex items-center gap-4">
-                  <div className="rounded-full bg-primary/10 p-3">
-                    <svg
-                      className="h-6 w-6 text-primary"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
-                      />
-                    </svg>
-                  </div>
-                  <CardTitle className="text-xl">Security</CardTitle>
+              <div className="text-center md:text-left px-4">
+                <h1 className="text-6xl md:text-7xl font-medium mb-6 bg-gradient-to-r from-primary to-primary-foreground bg-clip-text text-transparent">
+                  Full Stack<br/>
+                  Developer
+                </h1>
+
+                <div className="space-y-4 mt-8 mb-8">
+                  <p className="text-md text-zinc-400 animate-fadeIn">
+                    Building innovative solutions with modern technologies.
+                    <br className="hidden md:inline"/>
+                    Various Languages, Databases, and Frameworks.
+                  </p>
                 </div>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground">
-                  Protect your data and your users. Security is the key to success.
-                </p>
-              </CardContent>
-            </Card>
-          </motion.div>
 
-          <motion.div
-            initial={{opacity: 0, y: 20}}
-            animate={{opacity: 1, y: 0}}
-            transition={{duration: 0.5, delay: 0.4}}
-          >
-            <Card className="border-primary/20">
-              <CardHeader>
-                <div className="flex items-center gap-4">
-                  <div className="rounded-full bg-primary/10 p-3">
-                    <svg
-                      className="h-6 w-6 text-primary"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"
-                      />
-                    </svg>
-                  </div>
-                  <CardTitle className="text-xl">Scalability</CardTitle>
+                <div className="flex flex-col md:flex-row items-center md:items-start justify-center md:justify-start gap-4">
+                  <Button
+                    asChild
+                    className="w-full md:w-auto bg-white text-black hover:bg-zinc-100 rounded-full px-6 py-6 text-lg"
+                  >
+                    <Link prefetch={false} href="https://github.com/ohalee" title="GitHub">
+                      <SiGithub className="h-4 w-4"/>
+                      GitHub
+                      <ChevronRight className="w-4 h-4 ml-2"/>
+                    </Link>
+                  </Button>
+                  <Button
+                    asChild
+                    variant="ghost"
+                    className="w-full md:w-auto text-zinc-400 hover:text-white rounded-full px-6 py-6 text-lg"
+                  >
+                    <Link prefetch={false} href="mailto:business@ohalee.com" title="Contact">
+                      Contact
+                      <ChevronRight className="w-4 h-4 ml-2"/>
+                    </Link>
+                  </Button>
                 </div>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground">
-                  Grow without limits. Your software should be able to handle it.
-                </p>
-              </CardContent>
-            </Card>
-          </motion.div>
-        </div>
-      </section>
+              </div>
+            </div>
 
-      <section className="mx-auto max-w-7xl px-8 py-8">
-        <motion.h2
-          initial={{opacity: 0}}
-          animate={{opacity: 1}}
-          transition={{duration: 0.5}}
-          className="text-3xl font-bold tracking-tight mb-12 text-center bg-gradient-to-r from-primary to-primary-foreground bg-clip-text text-transparent"
-        >
-          Featured Projects
-        </motion.h2>
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-          <AnimatedCard index={0}>
-            <Card className="border-primary/20 hover:border-primary/50 transition-colors max-w-sm mx-auto">
-              <CardHeader className="p-4">
-                <CardTitle className="text-primary text-lg">PinguProxy</CardTitle>
-                <CardDescription className="text-sm">IPv6 Proxy Service</CardDescription>
-              </CardHeader>
-              <CardContent className="p-4 pt-0">
-                <p className="text-muted-foreground text-sm">
-                  A professional proxy service providing IPv6 solutions for various networking needs. Built with
-                  performance and reliability in mind.
-                </p>
-              </CardContent>
-              <CardFooter className="p-4 pt-0">
-                <Button variant="secondary" className="w-full hover:text-primary text-sm" asChild>
-                  <Link href="https://pinguproxy.com">
-                    <Globe className="h-3 w-3"/>
-                    Visit Website
-                  </Link>
-                </Button>
-              </CardFooter>
-            </Card>
-          </AnimatedCard>
-
-          <AnimatedCard index={1}>
-            <Card className="border-primary/20 hover:border-primary/50 transition-colors max-w-sm mx-auto">
-              <CardHeader className="p-4">
-                <CardTitle className="text-primary text-lg">FX Replay</CardTitle>
-                <CardDescription className="text-sm">Trading Strategy Testing Platform</CardDescription>
-              </CardHeader>
-              <CardContent className="p-4 pt-0">
-                <p className="text-muted-foreground text-sm">
-                  Test and refine your manual trading strategies using historical market data.
-                  An advanced platform for forex traders.
-                </p>
-              </CardContent>
-              <CardFooter className="p-4 pt-0">
-                <Button variant="secondary" className="w-full hover:text-primary text-sm" asChild>
-                  <Link href="https://fxreplay.ohalee.com">
-                    <LucideAlignHorizontalDistributeCenter className="h-3 w-3"/>
-                    Visit Platform
-                  </Link>
-                </Button>
-              </CardFooter>
-            </Card>
-          </AnimatedCard>
-
-          <AnimatedCard index={2}>
-            <Card className="border-primary/20 hover:border-primary/50 transition-colors max-w-sm mx-auto">
-              <CardHeader className="p-4">
-                <CardTitle className="text-primary text-lg">ohMusic</CardTitle>
-                <CardDescription className="text-sm">Discord Music Bot</CardDescription>
-              </CardHeader>
-              <CardContent className="p-4 pt-0">
-                <p className="text-muted-foreground text-sm">
-                  A feature-rich Discord music bot supporting multiple platforms including YouTube,
-                  Spotify, and SoundCloud. Stream your favorite music with high-quality audio.
-                </p>
-              </CardContent>
-              <CardFooter className="p-4 pt-0">
-                <Button variant="secondary" className="w-full hover:text-primary text-sm">
-                  <Music className="h-3 w-3"/>
-                  ohMusic#3095
-                </Button>
-              </CardFooter>
-            </Card>
-          </AnimatedCard>
-
-          <AnimatedCard index={3}>
-            <Card className="border-primary/20 hover:border-primary/50 transition-colors max-w-sm mx-auto">
-              <CardHeader className="p-4">
-                <CardTitle className="text-primary text-lg">Minecraft Plugins</CardTitle>
-                <CardDescription className="text-sm">BuiltByBit Creator Profile</CardDescription>
-              </CardHeader>
-              <CardContent className="p-4 pt-0">
-                <p className="text-muted-foreground text-sm">
-                  Collection of high-quality Minecraft plugins including Bedwars, Guilds, Docker Server Manager,
-                  Tournaments, and OneBlock. Trusted by numerous server owners.
-                </p>
-              </CardContent>
-              <CardFooter className="p-4 pt-0">
-                <Button variant="secondary" className="w-full hover:text-primary text-sm" asChild>
-                  <Link href="https://builtbybit.com/creators/ohalee.124730">
-                    <Globe className="h-3 w-3"/>
-                    View Profile
-                  </Link>
-                </Button>
-              </CardFooter>
-            </Card>
-          </AnimatedCard>
-          <AnimatedCard index={4}>
-            <Card className="border-primary/20 hover:border-primary/50 transition-colors max-w-sm mx-auto">
-              <CardHeader className="p-4">
-                <CardTitle className="text-primary text-lg">Matchmaking Library</CardTitle>
-                <CardDescription className="text-sm">Java Matchmaking Library</CardDescription>
-              </CardHeader>
-              <CardContent className="p-4 pt-0">
-                <p className="text-muted-foreground text-sm">
-                  A powerful Java library for implementing matchmaking systems in games and applications. Simplifies the process of creating balanced and fair matches.
-                </p>
-              </CardContent>
-              <CardFooter className="p-4 pt-0">
-                <Button variant="secondary" className="w-full hover:text-primary text-sm" asChild>
-                  <Link href="https://builtbybit.com/resources/ultimatematchmaking-game-library.30128/">
-                    <SiGithub className="h-3 w-3"/>
-                    View on BuiltByBit
-                  </Link>
-                </Button>
-              </CardFooter>
-            </Card>
-          </AnimatedCard>
-        </div>
-      </section>
-
-      <footer className="border-t mt-8 border-primary/20">
-        <div className="mx-auto max-w-7xl px-4 py-6">
-          <div className="flex justify-center space-x-6 mb-4">
-            <Button variant="ghost" size="icon" asChild>
-              <Link href="https://github.com/ohalee">
-                <SiGithub className="h-5 w-5 text-muted-foreground hover:text-primary"/>
-                <span className="sr-only">GitHub</span>
-              </Link>
-            </Button>
-            <Button variant="ghost" size="icon" asChild>
-              <Link href="https://t.me/ohAlee">
-                <SiTelegram className="h-5 w-5 text-muted-foreground hover:text-primary"/>
-                <span className="sr-only">Telegram</span>
-              </Link>
-            </Button>
-            <Button variant="ghost" size="icon" asChild>
-              <Link href="https://www.instagram.com/ohalee_">
-                <SiInstagram className="h-5 w-5 text-muted-foreground hover:text-primary"/>
-                <span className="sr-only">Instagram</span>
-              </Link>
-            </Button>
-            <Button variant="ghost" size="icon" asChild>
-              <Link href="https://www.tiktok.com/@ohalee">
-                <SiTiktok className="h-5 w-5 text-muted-foreground hover:text-primary"/>
-                <span className="sr-only">TikTok</span>
-              </Link>
-            </Button>
-            <Button variant="ghost" size="icon" asChild>
-              <Link href="https://discord.ohalee.com">
-                <SiDiscord className="h-5 w-5 text-muted-foreground hover:text-primary"/>
-                <span className="sr-only">Discord</span>
-              </Link>
-            </Button>
-            <Button variant="ghost" size="icon" asChild>
-              <Link href="mailto:business@ohalee.com">
-                <Mail className="h-5 w-5 text-muted-foreground hover:text-primary"/>
-                <span className="sr-only">Email</span>
-              </Link>
-            </Button>
-          </div>
-          <div className="text-center text-sm text-muted-foreground">
-            <p>© 2025 ohalee.com. All rights reserved.</p>
+            <div className="hidden md:block md:w-1/2 -mt-12">
+              <div className="relative w-full aspect-square">
+                <IconCloud images={images}/>
+              </div>
+            </div>
           </div>
         </div>
-      </footer>
+      </section>
+
+      <section className="pb-24">
+        <div className="container mx-auto px-4">
+          <div className="flex flex-col items-center text-center mb-8">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl text-white font-medium mb-6">
+              What to Aim For
+            </h2>
+            <p className="text-gray-400 max-w-3xl mx-auto text-lg">
+              Building software is about creating solutions that solve problems and make a difference.<br/>
+              Here are some key areas I focus on when developing software.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            {Object.entries(features).map(([key, value], idx) => (
+              <BlurFade key={idx} delay={0.25 + idx * 0.05} inView>
+                <MagicCard key={key} className="shadow-2xl" gradientColor="#262626">
+                  <CardHeader>
+                    <div className="flex items-center gap-4">
+                      <div className="rounded-full bg-primary/10 p-3">
+                        {value.svg}
+                      </div>
+                      <CardTitle className="text-xl">{value.title}</CardTitle>
+                    </div>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-muted-foreground">
+                      {value.description}
+                    </p>
+                  </CardContent>
+                </MagicCard>
+              </BlurFade>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="pb-24">
+        <div className="container mx-auto px-4">
+          <div className="flex flex-col items-center text-center mb-8">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl text-white font-medium mb-6">
+              Featured Projects
+            </h2>
+            <p className="text-gray-400 max-w-3xl mx-auto text-lg">
+              Here are some of the projects I&#39;ve worked on.<br/>
+              Each project is unique and serves a specific purpose.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            {Object.entries(projects).map(([key, value], idx) => (
+              <BlurFade key={idx} delay={0.25 + idx * 0.05} inView>
+                <MagicCard key={key} className="shadow-2xl" gradientColor="#262626" gradientFrom="#513775" gradientTo="#47738f">
+                  <CardHeader className="p-4">
+                    <CardTitle className="text-primary text-lg">{value.title}</CardTitle>
+                    <CardDescription className="text-sm">{value.description}</CardDescription>
+                  </CardHeader>
+                  <CardContent className="p-4 pt-0">
+                    <p className="text-muted-foreground text-sm">
+                      {value.content}
+                    </p>
+                  </CardContent>
+                  <CardFooter className="p-4 pt-0">
+                    <Button variant="secondary" className="w-full hover:text-primary text-sm" asChild>
+                      <Link href={value.link}>
+                        <value.icon className="h-3 w-3"/>
+                        {value.linkLabel}
+                      </Link>
+                    </Button>
+                  </CardFooter>
+                </MagicCard>
+              </BlurFade>
+            ))}
+          </div>
+        </div>
+      </section>
     </div>
   )
 }
