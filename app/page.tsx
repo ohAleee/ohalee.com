@@ -1,6 +1,5 @@
 "use client"
 
-import { BlurFade } from "@/components/ui/blur-fade";
 import { Button } from "@/components/ui/button"
 import { CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { IconCloud } from "@/components/ui/icon-cloud";
@@ -217,24 +216,22 @@ export default function Page() {
           </div>
 
           <div className="grid md:grid-cols-3 gap-6">
-            {Object.entries(features).map(([key, value], idx) => (
-              <BlurFade key={idx} delay={0.25 + idx * 0.05} inView>
-                <MagicCard key={key} className="shadow-2xl" gradientColor="#262626">
-                  <CardHeader>
-                    <div className="flex items-center gap-4">
-                      <div className="rounded-full bg-primary/10 p-3">
-                        {value.svg}
-                      </div>
-                      <CardTitle className="text-xl">{value.title}</CardTitle>
+            {Object.entries(features).map(([key, value]) => (
+              <MagicCard key={key} className="shadow-2xl" gradientColor="#262626">
+                <CardHeader>
+                  <div className="flex items-center gap-4">
+                    <div className="rounded-full bg-primary/10 p-3">
+                      {value.svg}
                     </div>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-muted-foreground">
-                      {value.description}
-                    </p>
-                  </CardContent>
-                </MagicCard>
-              </BlurFade>
+                    <CardTitle className="text-xl">{value.title}</CardTitle>
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-muted-foreground">
+                    {value.description}
+                  </p>
+                </CardContent>
+              </MagicCard>
             ))}
           </div>
         </div>
@@ -253,28 +250,26 @@ export default function Page() {
           </div>
 
           <div className="grid md:grid-cols-3 gap-6">
-            {Object.entries(projects).map(([key, value], idx) => (
-              <BlurFade key={idx} delay={0.25 + idx * 0.05} inView>
-                <MagicCard key={key} className="shadow-2xl" gradientColor="#262626" gradientFrom="#513775" gradientTo="#47738f">
-                  <CardHeader className="p-4">
-                    <CardTitle className="text-primary text-lg">{value.title}</CardTitle>
-                    <CardDescription className="text-sm">{value.description}</CardDescription>
-                  </CardHeader>
-                  <CardContent className="p-4 pt-0">
-                    <p className="text-muted-foreground text-sm">
-                      {value.content}
-                    </p>
-                  </CardContent>
-                  <CardFooter className="p-4 pt-0">
-                    <Button variant="secondary" className="w-full hover:text-primary text-sm" asChild>
-                      <Link href={value.link}>
-                        <value.icon className="h-3 w-3"/>
-                        {value.linkLabel}
-                      </Link>
-                    </Button>
-                  </CardFooter>
-                </MagicCard>
-              </BlurFade>
+            {Object.entries(projects).map(([key, value]) => (
+              <MagicCard key={key} className="shadow-2xl" gradientColor="#262626" gradientFrom="#513775" gradientTo="#47738f">
+                <CardHeader className="p-4">
+                  <CardTitle className="text-primary text-lg">{value.title}</CardTitle>
+                  <CardDescription className="text-sm">{value.description}</CardDescription>
+                </CardHeader>
+                <CardContent className="p-4 pt-0">
+                  <p className="text-muted-foreground text-sm">
+                    {value.content}
+                  </p>
+                </CardContent>
+                <CardFooter className="p-4 pt-0">
+                  <Button variant="secondary" className="w-full hover:text-primary text-sm" asChild>
+                    <Link href={value.link}>
+                      <value.icon className="h-3 w-3"/>
+                      {value.linkLabel}
+                    </Link>
+                  </Button>
+                </CardFooter>
+              </MagicCard>
             ))}
           </div>
         </div>
