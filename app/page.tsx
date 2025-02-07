@@ -174,7 +174,7 @@ export default function Page() {
                     asChild
                     className="w-full md:w-auto bg-white text-black hover:bg-zinc-100 rounded-full px-6 py-6 text-lg"
                   >
-                    <Link prefetch={false} href="https://github.com/ohalee" title="GitHub">
+                    <Link prefetch={false} href="https://github.com/ohaleee" title="GitHub">
                       <SiGithub className="h-4 w-4"/>
                       GitHub
                       <ChevronRight className="w-4 h-4 ml-2"/>

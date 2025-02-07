@@ -12,7 +12,7 @@ const DATA = {
   contact: {
     GitHub: {
       name: "GitHub",
-      url: "https://github.com/ohalee",
+      url: "https://github.com/ohaleee",
       icon: SiGithub,
     },
     Telegram: {
